@@ -535,3 +535,5 @@
 172.24.0.1 - - [19/Dec/2023:07:34:29 +0000] "GET /favicon.ico HTTP/1.1" 200 4923 "http://localhost:8000/v1/resource2" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
 172.24.0.1 - - [19/Dec/2023:07:42:18 +0000] "GET /v1/resource2 HTTP/1.1" 200 4954 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
 172.24.0.1 - - [19/Dec/2023:07:42:18 +0000] "GET /favicon.ico HTTP/1.1" 200 4923 "http://localhost:8000/v1/resource2" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+172.24.0.1 - - [19/Dec/2023:07:46:18 +0000] "GET /v1/resource2 HTTP/1.1" 200 4954 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+172.24.0.1 - - [19/Dec/2023:07:46:18 +0000] "GET /favicon.ico HTTP/1.1" 200 4923 "http://localhost:8000/v1/resource2" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
