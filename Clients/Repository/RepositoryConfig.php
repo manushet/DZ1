@@ -3,10 +3,9 @@ declare(strict_types = 1);
 
 namespace Clients\Repository;
 
-require_once 'Clients/Utils/ServiceConfigInterface.php';
+use Clients\Utils\ServiceConfigInterface;
 
-use \Clients\Utils\ServiceConfigInterface;
-class Config implements ServiceConfigInterface 
+class RepositoryConfig implements ServiceConfigInterface 
 {
     public function __construct(
         public string $host, 

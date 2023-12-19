@@ -8,7 +8,7 @@ use Kernel\StartStopperInterface;
 
 class Kernel 
 {
-        
+       
     /** 
      * @param []StartStopperInterface $services
      * 
@@ -24,8 +24,16 @@ class Kernel
         }
     }
 
-    public function runWorker(Worker $worker) {
-        $worker->prepareStart();
+    public function runWorkers(array $workers) {
+        echo "<br>Starting all workers!<br>";
+        
+        foreach ($workers as $worker) {
+            if ($worker instanceof Worker) {
+                if (!$worker->isRunning) {
+                    $worker->prepareStart();
+                }
+            }
+        }         
     }
 
     public function stopWorkers(array $workers) {
@@ -40,7 +48,8 @@ class Kernel
             }
         }        
     }  
-    
+
+  
     public function shutdown() {
         
         $reversedServices = array_reverse($this->services);

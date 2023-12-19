@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 namespace Clients\Utils;
 
-require_once 'Clients/Logger/Logger.php';
-
 use Kernel\StartStopperInterface;
 use \Exception;
 use Clients\Logger\Logger;
@@ -29,6 +27,8 @@ abstract class Worker implements StartStopperInterface
 
     public function prepareStart(): void
     {
+        $log = new Logger();
+        
         try {
 
             $this->start();
@@ -38,8 +38,6 @@ abstract class Worker implements StartStopperInterface
                 echo "<br>Worker ID {$this->id} has started successfully<br>";
             }
             else {   
-                $log = new Logger();
-
                 $logMsg = "Something went wrong while starting Worker ID {$this->id}: {$this->error}";
                 
                 echo "<br>$logMsg<br>";
@@ -50,7 +48,6 @@ abstract class Worker implements StartStopperInterface
             }
         } 
         catch (Exception $e) {
-            $log = new Logger();
             $log->log(Logger::ERROR, "Failed to run Worker ID {$this->id}: {$e->getMessage()}");
         }
     }    

@@ -1,15 +1,13 @@
 <?php 
 declare(strict_types = 1);
 
-require_once __DIR__.'/Config.php';
-require_once __DIR__.'/Clients/Repository/Repository.php';
-require_once __DIR__.'/Clients/Server/Server.php';
-require_once __DIR__.'/Clients/Worker/Worker1.php';
-require_once __DIR__.'/Clients/Worker/Worker2.php';
-require_once __DIR__.'/Clients/Worker/Worker3.php';
-require_once __DIR__.'/Kernel/Kernel.php';
+require_once "autoload.php";
+require_once "vendor/autoload.php";
 
+use Config\Config;
+use Config\Routes;
 use Kernel\Kernel;
+use Config\Services;
 use Clients\Server\Server;
 use Clients\Worker\Worker1;
 use Clients\Worker\Worker2;
@@ -20,9 +18,13 @@ use Clients\Repository\Repository;
 
 $config = new Config();
 
+$routes = new Routes();
+
+$services = new Services();
+
 $repository = new Repository($config->repositoryConfig);
 
-$server = new Server($config->serverConfig);
+$server = new Server($config->serverConfig, $routes, $services);
 
 var_dump($config->repositoryConfig);
 
@@ -32,18 +34,21 @@ $kernel = new Kernel([$repository, $server]);
 
 $kernel->run();
 
+$server->sendRequest();
+
+$serverResponse = $server->getResponse(); 
+
+var_dump($serverResponse);
+
 $worker1 = new Worker1("worker1-1");
-$kernel->runWorker($worker1);
-
 $worker2 = new Worker2("worker2-1");
-$kernel->runWorker($worker2);
-
 $worker3 = new Worker3("worker3-1");
-$kernel->runWorker($worker3);
 
 $workers = [$worker1, $worker2, $worker3];
 
-//Getting Shutdown/Timeout/Cancel Signal...
+$kernel->runWorkers($workers);
+
+echo "<br>Ooops! Shutdown signal received. Preparing to the graceful shutdown...<br>";
 
 $kernel->stopWorkers($workers);
 

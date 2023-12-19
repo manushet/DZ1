@@ -1,0 +1,12 @@
+Controller\IndexController::class:
+  bind:
+    - Service\Service1::class
+    - "env:ARG1"
+Controller\ResourceController::class:
+  bind:
+    - Service\Service2::class
+    - "env:ARG2"
+Service\Service1::class:
+  bind:
+    - Service\Service3::class
+    - "env:ARG3"

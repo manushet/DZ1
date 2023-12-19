@@ -1,0 +1,9 @@
+/v1/resource1: 
+  controller: Controller\IndexController::class
+  method: [GET]
+  action: action1
+
+/v1/resource2:
+  controller: Controller\ResourceController::class
+  method: [GET, POST]
+  action: action2

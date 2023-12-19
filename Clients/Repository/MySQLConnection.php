@@ -4,16 +4,13 @@ declare(strict_types = 1);
 
 namespace Clients\Repository;
 
-require_once 'Clients/Utils/Connection.php';
-require_once 'Clients/Utils/Exception/ConnectionException.php';
-
 use \PDO;
 use \Exception;
 use Clients\Utils\Connection;
 use Clients\Utils\Exception\ConnectionException;
 
 class MySQLConnection extends Connection
-{
+{  
     public function connect(): void
     {       
         try {

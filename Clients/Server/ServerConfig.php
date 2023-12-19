@@ -3,11 +3,9 @@ declare(strict_types = 1);
 
 namespace Clients\Server;
 
-require_once 'Clients/Utils/ServiceConfigInterface.php';
+use Clients\Utils\ServiceConfigInterface;
 
-use \Clients\Utils\ServiceConfigInterface;
-
-class Config  implements ServiceConfigInterface 
+class ServerConfig  implements ServiceConfigInterface 
 {
     public function __construct(
         public string $addr, 

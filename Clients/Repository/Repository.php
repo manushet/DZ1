@@ -3,17 +3,15 @@ declare(strict_types = 1);
 
 namespace Clients\Repository;
 
-require_once 'Kernel/StartStopperInterface.php';
-require_once 'Clients/Repository/MySQLConnection.php';
-
 use Kernel\StartStopperInterface;
 use Clients\Repository\MySQLConnection;
+use Clients\Repository\RepositoryConfig;
 
 class Repository implements StartStopperInterface 
 {
     private MySQLConnection $connection;
 
-    public function __construct(public Config $config)
+    public function __construct(public RepositoryConfig $config)
     {
         $this->connection = new MySQLConnection($config);
     }
